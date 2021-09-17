@@ -29,7 +29,7 @@ function validate(){
 	  }
 	
 	if(isNaN(phone) || phone.length != 10){
-		window.alert("Please Enter valid Phone Number");
+	window.alert("Please Enter valid Phone Number");
 		document.getElementById("phone").focus;
 		return false;
 	  }
@@ -41,7 +41,7 @@ function validate(){
 	  }
 	  if(!password.match(psw))
 	  {
-	  window.alert(" please enter Valid Password!");
+window.alert(" please enter Valid Password!");
 	  document.getElementById("password").focus;
 	  return false;
 	  }
@@ -66,7 +66,7 @@ function validate(){
             break;
         }
     }
-    if(!okay){alert("Please check atleast one  checkbox");}
+   if(!okay){alert("Please check atleast one  checkbox");}
 }
        
 
