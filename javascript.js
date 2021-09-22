@@ -15,6 +15,9 @@ function printError(elemId, hintMsg) {
 	
 	
 
+function check(text){
+	document.getElementById(text).innerHTML = "";
+}
 
 function validate(){
 	var firstname= document.getElementById("firstname").value;
@@ -29,13 +32,12 @@ function validate(){
 
 	// Defining error variables with a default value
    officeErr= lnameErr = emailErr = phoneErr = fnameErr = genderErr = interestErr = pswErr = conpswErr = dateErr = true;
-    
     // Validate firstname
     if(firstname == "") {
         printError("fnameErr", "Please enter first your name");
     } else if(firstname.length<3){
 		printError("fnameErr", "Please enter a valid name");
-		document.getElementById(firstname).focus();
+		document.getElementById('firstname').focus();
 	}
 	else	{
         var regex = /^[a-zA-Z\s]+$/;                

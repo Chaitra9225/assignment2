@@ -17,37 +17,37 @@
         <div class="user-details">
           <div class="input-box">
             <span class="details">First name</span>
-            <input type="text" placeholder="Enter your first name" id="firstname" autofocus required>
+            <input type="text" placeholder="Enter your first name" id="firstname" onkeypress="check('fnameErr')" autofocus required>
             <div class="error"  id="fnameErr"></div>
           </div>
           <div class="input-box">
             <span class="details">Last name</span>
-            <input type="text" placeholder="Enter your last name" id="lastname" required>
+            <input type="text" placeholder="Enter your last name" id="lastname" onkeypress="check('lnameErr')" required>
             <div class="error" id="lnameErr"></div>
           </div>
           <div class="input-box">
             <span class="details">Email</span>
-            <input type="text" placeholder="Enter your email" id="email" required>
+            <input type="text" placeholder="Enter your email" id="email" onkeypress="check('emailErr')" required>
             <div class="error" id="emailErr"></div>
           </div>
           <div class="input-box">
             <span class="details">Phone Number</span>
-            <input type="text" placeholder="Enter your number" id="phone" required>
+            <input type="text" placeholder="Enter your number" id="phone" onkeypress="check('phoneErr')" required>
             <div class="error" id="phoneErr"></div>
           </div>
           <div class="input-box">
             <span class="details">Office</span>
-            <input type="text" placeholder="Enter your office number" id="office" required>
+            <input type="text" placeholder="Enter your office number" id="office" onkeypress="check('officeErr')" required>
             <div class="error" id="officeErr"></div>
           </div>
           <div class="input-box">
             <span class="details">Password</span>
-            <input type="text" placeholder="Enter your password" id="password" required>
+            <input type="text" placeholder="Enter your password" id="password" onkeypress="check('pswErr')" required>
             <div class="error" id="pswErr"></div>
           </div>
           <div class="input-box">
             <span class="details">Confirm Password</span>
-            <input type="text" placeholder="Confirm your password" id="conpsw" required>
+            <input type="text" placeholder="Confirm your password" id="conpsw" onkeypress="check('conpswErr')" required>
             <div class="error" id="conpswErr"></div>
           </div>
           <div class="input-box">
@@ -65,8 +65,8 @@
 <h4>Date of Birth</h4>  
 </div>
 <div class="col-sm-3">
-<input type=date id = DOB onchange="val()" required> 
-</div>
+<input type=date id = DOB onchange="val()" max="today" required> 
+</div><br><br>
 <div class="error" id="dateErr"></div><br>
 </div>
 <br><br>
@@ -102,15 +102,15 @@
             <div class="container">
             <div class="category">
               <label for="dot-11">
-                <input type="checkbox" name="interest" id="d1" value="biking">
+                <input type="checkbox" name="interest" id="d1" value="biking" onchange="check('interestErr')">
               <span class="gender">Biking</span>
             </label>
             <label for="dot-12">
-              <input type="checkbox" name="interest" id="d2" value="riding">
+              <input type="checkbox" name="interest" id="d2" value="riding" onchange="check('interestErr')">
               <span class="gender">Riding</span>
             </label>
             <label for="dot-13">
-              <input type="checkbox" name="interest" id="d3" value="playing">
+              <input type="checkbox" name="interest" id="d3" value="playing" onchange="check('interestErr')">
               <span class="gender">Plaing</span>
               </label>
             </div>
