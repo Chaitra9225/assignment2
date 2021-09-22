@@ -76,7 +76,8 @@ form .input-box span.details{
 }
 .user-details .input-box input:focus,
 .user-details .input-box input:valid{
-  border-color: #9b59b6;
+  border-color: #9f41c4;
+  border-width: 2.5px;
 }
  form .gender-details .gender-title{
   font-size: 20px;
@@ -193,4 +194,11 @@ span.select{position:absolute; background:#ffffff url('../images/drop-down.png')
 .styled:active {
   box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
               inset 2px 2px 3px rgba(0, 0, 0, .6);
+}
+
+
+
+.error{
+ font-size: 15px;
+ color:red;
 }

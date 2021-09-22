@@ -1,3 +1,20 @@
+// Defining a function to display error message
+function printError(elemId, hintMsg) {
+    document.getElementById(elemId).innerHTML = hintMsg;
+}
+    var fnameErr= document.getElementById("fnameErr").value;
+	var lnameErr= document.getElementById("lnameErr").value;
+    var emailErr= document.getElementById("emailErr").value;
+	var phoneErr= document.getElementById("phoneErr").value;
+	var officeErr= document.getElementById("officeErr").value;
+	var pswErr= document.getElementById("pswErr").value;
+	var conpswErr= document.getElementById("conpswErr").value;  
+	var genderErr= document.getElementById("genderErr").value;
+	var interestErr= document.getElementById("interestErr").value;
+	var dateErr= document.getElementById("dareErr").value;
+	
+	
+
 
 function validate(){
 	var firstname= document.getElementById("firstname").value;
@@ -10,51 +27,95 @@ function validate(){
 	var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 	var psw=  /^[A-Za-z]\w{7,14}$/;
 
-	if(firstname.length==0 ||firstname.length<3){
-		window.alert("Please Enter valid first name");
-		firstname=document.getElementById("firstname").focus();
-		return false;
+	// Defining error variables with a default value
+   officeErr= lnameErr = emailErr = phoneErr = fnameErr = genderErr = interestErr = pswErr = conpswErr = dateErr = true;
+    
+    // Validate firstname
+    if(firstname == "") {
+        printError("fnameErr", "Please enter first your name");
+    } else if(firstname.length<3){
+		printError("fnameErr", "Please enter a valid name");
+		document.getElementById(firstname).focus();
 	}
-	
-	if(lastname.length==0){
-		window.alert("Please Enter valid last name");
-		document.getElementById("lastname").focus.focus;
-		return false;
-	}
-  if(!email.match(mailformat))
-	  {
-	  window.alert(" please enter Valid email address!");
-	  document.getElementById("email").focus;
-	  return false;
-	  }
-	
-	if(isNaN(phone) || phone.length != 10){
-	window.alert("Please Enter valid Phone Number");
-		document.getElementById("phone").focus;
-		return false;
-	  }
+	else	{
+        var regex = /^[a-zA-Z\s]+$/;                
+        if(regex.test(firstname) === false) {
+			document.getElementById("firstname").focus();
+            printError("fnameErr", "Please enter a valid name");
+			
+        } else {
+            printError("fnameErr", "");
+            fnameErr = false;
+        }
+    }
 
-	  if (isNaN(office)){ 
-    	window.alert("please enter only numbers");
-		document.getElementById("office").focus;
-		return false;
-	  }
-	  if(!password.match(psw))
-	  {
-window.alert(" please enter Valid Password!");
-	  document.getElementById("password").focus;
-	  return false;
-	  }
+    // Validate lastname
+    if(lastname == "") {
+        printError("lnameErr", "Please enter your name");
+    }  else {
+            printError("lnameErr","");
+            lnameErr = false;
+        }
+	
+	 // Validate email address
+	 if(email =="") {
+        printError("emailErr", "Please enter your email address");
+    } else {
+        // Regular expression for basic email validation
+        var regex = /^\S+@\S+\.\S+$/;
+        if(regex.test(email) === false) {
+            printError("emailErr", "Please enter a valid email address");
+        } else{
+            printError("emailErr", "");
+            emailErr = false;
+        }
+    }
+      // Validate mobile number
+	  if(phone == "") {
+        printError("phoneErr", "Please enter your mobile number");
+    } else {
+        var regex = /^[1-9]\d{9}$/;
+        if(regex.test(phone) === false) {
+            printError("mobileErr", "Please enter a valid 10 digit mobile number");
+        } else{
+            printError("phoneErr", "");
+           phoneErr = false;
+        }
+    }
+    //validate office number
+	if(office==""){
+		printError("officeErr","Please enter your office number")
+	   }
+	   else if (isNaN(office)){ 
+		   printError("officeErr", "Please enter a valid office number");
+	   } else{
+		   printError("officeErr", "");
+		  officeErr = false;
+	   }
+
+    //validate password
+	  if(!password.match(psw)){ 
+	  printError("pswErr", "Please enter a valid password");
+	} else{
+		printError("pswErr", "");
+	   pswErr = false;
+	}
+
+
+    //validate confirm password
+
 	  if(conpsw.length==0){
-		  window.alert("please Re-enter your password");
-		  document.getElementById("conpsw").focus;
-		return false;
+		printError("conpswErr", "please Re-enter your password");
 	  }
-	  if(conpsw!=password){
-		window.alert(" password is not matching!.. Please try again");
-		document.getElementById("conpsw").focus;
-		return false;
+	  else if(conpsw!=password){
+		printError("conpswErr", "password is not matching!.. Please try again");
 	  }
+	  else{
+		printError("conpswErr", "");
+	   conpswErr = false;
+	}
+
+	//validate check box
 	  
 	   var checkboxs=document.getElementsByName("interest");
         var okay=false;
@@ -66,7 +127,13 @@ window.alert(" please enter Valid Password!");
             break;
         }
     }
-   if(!okay){alert("Please check atleast one  checkbox");}
+   if(!okay){
+	   printError("interestErr", "Please check atleast one checkbox");
+	} 
+	else{
+		printError("interestErr","")
+		interestErr=false;
+	}
 }
        
 
@@ -79,8 +146,7 @@ function val(){
 	var userinput = document.getElementById("DOB").value;  
     var dob = new Date(userinput); 
 	if(userinput==null || userinput==''){  
-		window.alert("Choose a date please!");   
-		return false;   
+		printError("dateErr","choose a date please!..")     
 	  } 
 	  //execute if user entered a date   
 	  else {  
@@ -108,11 +174,13 @@ function val(){
 		   
 		//DOB is greater than today's date, generate an error: Invalid date    
 		 if (dob>today) {  
-			window.alert("Invalid date input - Please try again!");
+			printError("dateErr","Invalid date input - Please try again!")
 		  }  
 		  else {  
 			//window.alert(year_age + " years " + month_age + " months " + day_age + " days");
 		    document.getElementById("age").value = (year_age+"."+month_age + " years ") ;
+			printError("dateErr","");
+			dateErr=false;
 		  }  
 	   } 
 
